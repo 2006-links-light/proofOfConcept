@@ -47,7 +47,7 @@ export default class FgScene extends Phaser.Scene {
     //   console.log("Error getting document:", error);
     // });
 
-    db.collection("test").doc("3oL8keTflsKEqgeGA5z7")
+    db.collection("room1").doc("bobby")
       .onSnapshot(function (doc) {
         console.log("Current data: ", doc.data());
       });
@@ -108,6 +108,17 @@ export default class FgScene extends Phaser.Scene {
     this.player.update(this.cursors);
     // console.log('x axis ' + this.player.x)
     // console.log('y axis ' + this.player.y)
+
+    db.collection("room1").doc("bobby").update({
+      x: this.player.x,
+      y: this.player.y
+    })
+      .then(function () {
+        console.log("Document successfully written!");
+      })
+      .catch(function (error) {
+        console.error("Error writing document: ", error);
+      });
 
     // db.collection("cities").doc("SF")
     //   .onSnapshot(function (doc) {
