@@ -60,5 +60,7 @@ jspm_packages/
 # next.js build output
 .next
 
+#firebase config
+secrets.js
 
 bundle.js

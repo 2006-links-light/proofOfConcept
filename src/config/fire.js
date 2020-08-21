@@ -1,10 +1,11 @@
 import firebase from 'firebase'
 // Required for side-effects
 import 'firebase/firestore'
+import key from '../../secrets'
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyCd_Gt-RcwMuh0BoiPVyQqkkNTpbmycyKs",
+  apiKey: key,
   authDomain: "phutbol-70b57.firebaseapp.com",
   databaseURL: "https://phutbol-70b57.firebaseio.com",
   projectId: "phutbol-70b57",
