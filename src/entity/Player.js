@@ -62,8 +62,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   update(cursors) {
     // << INSERT CODE HERE >>
     this.updateMovement(cursors)
-    console.log('x axis ' + this.player.x)
-    console.log('y axis ' + this.player.y)
+    // console.log('x axis ' + this.player.x)
+    // console.log('y axis ' + this.player.y)
     // this.updateJump(cursors)
     // this.updateInAir();
     // this.updateDown(cursors)

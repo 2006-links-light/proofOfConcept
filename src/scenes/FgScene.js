@@ -2,7 +2,7 @@ import Player from '../entity/player.js'
 import Ground from '../entity/ground.js'
 import Ball from '../entity/ball.js'
 import Player2 from '../entity/player2.js'
-
+import { db } from '../config/fire'
 
 
 export default class FgScene extends Phaser.Scene {
@@ -34,6 +34,24 @@ export default class FgScene extends Phaser.Scene {
   }
 
   create() {
+    var docRef = db.collection("test").doc("3oL8keTflsKEqgeGA5z7");
+
+    docRef.get().then(function (doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }).catch(function (error) {
+      console.log("Error getting document:", error);
+    });
+
+    db.collection("test").doc("3oL8keTflsKEqgeGA5z7")
+      .onSnapshot(function (doc) {
+        console.log("Current data: ", doc.data());
+      });
+
     // Create game entities
     // << CREATE GAME ENTITIES HERE >>
     this.player = new Player(this, 50, 325, 'josh').setScale(0.25);
@@ -88,9 +106,13 @@ export default class FgScene extends Phaser.Scene {
   update(time, delta) {
     // << DO UPDATE LOGIC HERE >>
     this.player.update(this.cursors);
-    console.log('x axis ' + this.player.x)
-    console.log('y axis ' + this.player.y)
+    // console.log('x axis ' + this.player.x)
+    // console.log('y axis ' + this.player.y)
 
+    // db.collection("cities").doc("SF")
+    //   .onSnapshot(function (doc) {
+    //     console.log("Current data: ", doc.data());
+    //   });
   }
 
 }
