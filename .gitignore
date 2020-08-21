@@ -61,6 +61,6 @@ jspm_packages/
 .next
 
 #firebase config
-./secrets.js
+secrets.js
 
 bundle.js
