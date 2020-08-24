@@ -47,10 +47,18 @@ export default class FgScene extends Phaser.Scene {
     //   console.log("Error getting document:", error);
     // });
 
-    db.collection("room1").doc("bobby")
-      .onSnapshot(function (doc) {
-        console.log("Current data: ", doc.data());
-      });
+    const docRef = db.collection("room1").doc("bobby");
+
+    docRef.get().then(function (doc) {
+      if (doc.exists) {
+        console.log("Document data:", doc.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }).catch(function (error) {
+      console.log("Error getting document:", error);
+    });
 
     // Create game entities
     // << CREATE GAME ENTITIES HERE >>
@@ -113,12 +121,6 @@ export default class FgScene extends Phaser.Scene {
       x: this.player.x,
       y: this.player.y
     })
-      .then(function () {
-        console.log("Document successfully written!");
-      })
-      .catch(function (error) {
-        console.error("Error writing document: ", error);
-      });
 
     // db.collection("cities").doc("SF")
     //   .onSnapshot(function (doc) {
